@@ -1,0 +1,274 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Electric Generation in Spain - Latest 24 hours">
+    <meta name="keywords" content="Design, interactive, D3, experimental, spain, energy, renewable energy, energías renovables, interactivo, infografía, visualización, experimento">
+    <meta property="og:image" content="http://energia.ningunaparte.net/imgs/captura-big.png">
+    <meta name="twitter:creator" content="@ningunaparte" />
+    <meta name="author" content="Víctor San Vicente">
+    <title>Energy Consumption in Spain | Latest 24h - beta </title>
+    <link rel="stylesheet" href="../css/energia-font.css">
+    <link rel="stylesheet" href="../css/d3.css">
+    <!-- For IE 9 and below. ICO should be 32x32 pixels in size -->
+    <!--[if IE]><link rel="shortcut icon" href="imgs/fav/favicon.ico"><![endif]-->
+    <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
+    <link rel="apple-touch-icon-precomposed" href="../imgs/fav/apple-touch-icon-precomposed.png">
+    <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 196x196 pixels in size. -->
+    <link rel="icon" href="../imgs/fav/favicon.png">
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-62220959-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <a class='idioma' href="/">Versión en español</a>
+        <h2 class='visualizacion__title'>Electric Generation in Spain - Latest 24 hours<sup>BETA</sup></h2>
+        <h3 class='visualizacion__subtitle'>Generation Structure</h3>
+        <section id="chart" class='chart'></section>
+        <section id="j-energias">
+            <h3 class='visualizacion__subtitle'>Latest reads</h3>
+            <div class="energias">
+                <div id="id_eol" class="energia">
+                    <div class="energia__titulo">Generator</div>
+                    <dl>
+                        <dt class="energia__subtitulo">Current Apportation</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-eol">
+                                --
+                            </div>
+                            <div class="energia__valor j-valor-eol">
+                                -- </div>
+                        </dd>
+                        <dt class="energia__subtitulo">Average [N time]</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-media-eol">
+                                --
+                            </div>
+                            <div class="energia__valor j-aportacion-media-eol">*</div>
+                        </dd>
+                        <dt class="energia__subtitulo">Emissions of CO2</dt>
+                        <dd>
+                            <div class="energia__valor j-co2-eol">
+                                --
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div id="id_hid" class="energia">
+                    <div class="energia__titulo">Generator</div>
+                    <dl>
+                        <dt class="energia__subtitulo">Current Apportation</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-hid">
+                                --
+                            </div>
+                            <div class="energia__valor j-valor-hid">
+                                -- </div>
+                        </dd>
+                        <dt class="energia__subtitulo">Average [N time]</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-media-hid">
+                                --
+                            </div>
+                            <div class="energia__valor j-aportacion-media-hid">*</div>
+                        </dd>
+                        <dt class="energia__subtitulo">Emissions of CO2</dt>
+                        <dd>
+                            <div class="energia__valor j-co2-hid">
+                                --
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div id="id_sol" class="energia">
+                    <div class="energia__titulo">Generator</div>
+                    <dl>
+                        <dt class="energia__subtitulo">Current Apportation</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-sol" data-source="">
+                                --
+                            </div>
+                            <div class="energia__valor j-valor-sol">
+                                -- </div>
+                        </dd>
+                        <dt class="energia__subtitulo">Average [N time]</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-media-sol">
+                                --
+                            </div>
+                            <div class="energia__valor j-aportacion-media-sol">*</div>
+                        </dd>
+                        <dt class="energia__subtitulo">Emissions of CO2</dt>
+                        <dd>
+                            <div class="energia__valor j-co2-sol">
+                                --
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div id="id_aut" class="energia">
+                    <div class="energia__titulo">Generator</div>
+                    <dl>
+                        <dt class="energia__subtitulo">Current Apportation</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-aut">
+                                --
+                            </div>
+                            <div class="energia__valor j-valor-aut">
+                                -- </div>
+                        </dd>
+                        <dt class="energia__subtitulo">Average [N time]</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-media-aut">
+                                --
+                            </div>
+                            <div class="energia__valor j-aportacion-media-aut">*</div>
+                        </dd>
+                        <dt class="energia__subtitulo">Emissions of CO2</dt>
+                        <dd>
+                            <div class="energia__valor j-co2-aut">
+                                --
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="energias">
+                <div id="id_gf" class="energia">
+                    <div class="energia__titulo">Generator</div>
+                    <dl>
+                        <dt class="energia__subtitulo">Current Apportation</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-gf">
+                                --
+                            </div>
+                            <div class="energia__valor j-valor-gf">
+                                -- </div>
+                        </dd>
+                        <dt class="energia__subtitulo">Average [N time]</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-media-gf">
+                                --
+                            </div>
+                            <div class="energia__valor j-aportacion-media-gf">*</div>
+                        </dd>
+                        <dt class="energia__subtitulo">Emissions of CO2</dt>
+                        <dd>
+                            <div class="energia__valor j-co2-gf">
+                                --
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div id="id_nuc" class="energia">
+                    <div class="energia__titulo">Generator</div>
+                    <dl>
+                        <dt class="energia__subtitulo">Current Apportation</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-nuc">
+                                --
+                            </div>
+                            <div class="energia__valor j-valor-nuc">
+                                -- </div>
+                        </dd>
+                        <dt class="energia__subtitulo">Average [N time]</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-media-nuc">
+                                --
+                            </div>
+                            <div class="energia__valor j-aportacion-media-nuc">*</div>
+                        </dd>
+                        <dt class="energia__subtitulo">Emissions of CO2</dt>
+                        <dd>
+                            <div class="energia__valor j-co2-nuc">
+                                --
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div id="id_car" class="energia">
+                    <div class="energia__titulo">Generator</div>
+                    <dl>
+                        <dt class="energia__subtitulo">Current Apportation</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-car">
+                                --
+                            </div>
+                            <div class="energia__valor j-valor-car">
+                                -- </div>
+                        </dd>
+                        <dt class="energia__subtitulo">Average [N time]</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-media-car">
+                                --
+                            </div>
+                            <div class="energia__valor j-aportacion-media-car">*</div>
+                        </dd>
+                        <dt class="energia__subtitulo">Emissions of CO2</dt>
+                        <dd>
+                            <div class="energia__valor j-co2-car">
+                                --
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <div id="id_cc" class="energia">
+                    <div class="energia__titulo">Generator</div>
+                    <dl>
+                        <dt class="energia__subtitulo">Current Apportation</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-cc">
+                                --
+                            </div>
+                            <div class="energia__valor j-valor-cc">
+                                -- </div>
+                        </dd>
+                        <dt class="energia__subtitulo">Average [N time]</dt>
+                        <dd>
+                            <div class="energia__valor energia__valor--destacado j-porcentaje-media-cc">
+                                --
+                            </div>
+                            <div class="energia__valor j-aportacion-media-cc">*</div>
+                        </dd>
+                        <dt class="energia__subtitulo">Emissions of CO2</dt>
+                        <dd>
+                            <div class="energia__valor j-co2-cc">
+                                --
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="credits">
+                <p class="visualizacion__subtitle">Visualization by <a href="http://www.ningunaparte.net">Víctor San Vicente</a> con <a href="http://mbostock.github.com/d3/">d3</a>, based data <a href="http://www.ree.es/es">REE</a>.</p>
+            </div>
+            <div class="share">
+                <p>Share in</p>
+                <a href="https://twitter.com/intent/tweet?text=Infographic Electric Generation Spain Latest 24h&url=http://goo.gl/fKjGSE&hashtags=dataviz,d3js&via=ningunaparte" target="_blank" class="twitter"></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fenergia.ningunaparte.net/en/" target="_blank" class="facebook"></a>
+                <a href="https://plus.google.com/share?url=http%3A%2F%2Fenergia.ningunaparte.net%2Fen%2F" target="_blank" class="googleplus"></a>
+            </div>
+        </footer>
+    </div>
+    <script src="../js/d3.v3.min.js"></script>
+    <script src="../script.en.js"></script>
+</body>
+
+</html>
